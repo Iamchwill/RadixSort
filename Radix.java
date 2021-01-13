@@ -5,7 +5,7 @@ public class Radix{
   }
 
   public static int length(int n){
-    int out = (int)(Math.log10(n) + 1);
+    int out = (int)(Math.log10(Math.abs(n)) + 1);
     return out;
   }
 
@@ -16,10 +16,25 @@ public class Radix{
   }
 
   public static void radixSortSimple(SortableLinkedList data){
-
+    int longest = 1;
+    SortableLinkedList[] buckets = new SortableLinkedList[10];
+    for(int i = 0; i < 10; i++){
+      buckets[i] = new SortableLinkedList();
+    }
+    int length = data.size();
+    for(int i = 0; i < longest; i++){
+      for(int loop = 0; loop < length; loop++){
+        int sort = data.remove(0);
+        buckets[nth(sort, i)].add(sort);
+        if(i == 0){
+          if(length(sort) > longest) longest = length(sort);
+        }
+      }
+      merge(data, buckets);
+    }
   }
 
   public static void radixSort(SortableLinkedList data){
-
+    
   }
 }
