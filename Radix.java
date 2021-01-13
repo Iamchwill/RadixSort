@@ -5,7 +5,8 @@ public class Radix{
   }
 
   public static int length(int n){
-    return 0;
+    int out = (int)(Math.log10(n) + 1);
+    return out;
   }
 
   public static void merge(MyLinkedList original,MyLinkedList[]buckets){
